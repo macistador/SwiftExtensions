@@ -15,26 +15,17 @@ func combine<A, B>(_ value: A, with closure: @escaping (A) -> B) -> () -> B {
     return { closure(value) }
 }
 
-// Custom Colors
-extension UIColor {
-    struct Custom {
-        static let purple = UIColor(red: 111/255, green: 21/255, blue: 208/255, alpha: 1.0)
-        static let yellow = UIColor(red: 189/255, green: 208/255, blue: 31/255, alpha: 1.0)
-        static let cyan = UIColor(red: 21/255, green: 208/255, blue: 158/255, alpha: 1.0)
-        static let red = UIColor(red: 208/255, green: 34/255, blue: 21/255, alpha: 1.0)
-        static let green = UIColor(red: 5/255, green: 127/255, blue: 0/255, alpha: 1.0)
-        static let pink = UIColor(red: 208/255, green: 21/255, blue: 79/255, alpha: 1.0)
-    }
-}
 
-// Degrées
+// MARK: FloatingPoint
+
 extension FloatingPoint {
     var degreesToRadians: Self { return self * .pi / 180 }
     var radiansToDegrees: Self { return self * 180 / .pi }
 }
 
 
-// Rotation image
+// MARK: UIImage
+
 extension UIImage {
     func rotate(radians: CGFloat) -> UIImage {
         let rotatedSize = CGRect(origin: .zero, size: size)
@@ -145,7 +136,17 @@ extension UIImage {
     }
 }
 
+
+// MARK: ImageView
+
 extension UIImageView {
+
+    convenience init(clone: UIImageView) {
+        self.init(frame: clone.frame)
+        self.image = clone.image
+        self.contentMode = clone.contentMode
+    }
+
     func addOverlay(with color: UIColor) {
         //    self.image = self.image?.imageOverlay(with: color)
         self.image = self.image?.tint(color)
@@ -153,19 +154,8 @@ extension UIImageView {
 }
 
 
-// MARK: ImageView clone
 
-extension UIImageView {
-    convenience init(clone: UIImageView) {
-        self.init(frame: clone.frame)
-        self.image = clone.image
-        self.contentMode = clone.contentMode
-    }
-}
-
-
-
-// MARK: Layer fading
+// MARK: UIView : Layer fading
 
 extension UIView {
 
@@ -220,7 +210,7 @@ extension UIView {
 
 extension CALayer {
 
-    func setCircleBorder(color: UIColor) {
+    func setCircleBorder(with color: UIColor) {
         self.borderColor = color.cgColor
         self.borderWidth = 1.0
         self.cornerRadius = self.bounds.width / 2
