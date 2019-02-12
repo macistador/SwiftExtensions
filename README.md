@@ -2,7 +2,13 @@
 
 Personnal set of useful Swift extensions (iOS)
 
-## Extended
+## Installation
+
+  pod 'SwiftExtensions', :git => 'https://github.com/macistador/SwiftExtensions.git'
+
+(not published on the Cocoapods public repo) 
+
+## Extensions
 
 - FloatingPoint 
     - degrees / radiant conversion
@@ -36,10 +42,3 @@ Personnal set of useful Swift extensions (iOS)
 - String: 
     - "a string".localized
 - And others
-
-## Installation
-
-  pod 'SwiftExtensions', :git => 'https://github.com/macistador/SwiftExtensions.git'
-
-
-(not published on the Cocoapods public repo) 
